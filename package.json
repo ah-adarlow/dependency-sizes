@@ -1,18 +1,35 @@
 {
   "name": "dependency-sizes",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
+  "description": "Analyze node dependency sizes and structure",
+  "main": "index.js",
   "scripts": {
+    "test": "mocha",
     "start": "node ./bin/www"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ah-adarlow/dependency-sizes.git"
+  },
+  "author": "Adam Darlow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ah-adarlow/dependency-sizes/issues"
+  },
+  "homepage": "https://github.com/ah-adarlow/dependency-sizes#readme",
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "directory-tree": "^2.0.0",
     "express": "~4.15.5",
+    "get-folder-size": "^1.0.0",
     "hbs": "~4.0.1",
     "morgan": "~1.9.0",
     "node-sass-middleware": "0.9.8",
     "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
   }
 }
