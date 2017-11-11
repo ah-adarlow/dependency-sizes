@@ -1,2 +1,53 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.10.0/vis.min.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+    #mynetwork {
+      width: 1500px;
+      height: 1000px;
+      border: 1px solid lightgray;
+    }
+</style>
+
+<div id="mynetwork"></div>
+
+<script type="text/javascript">
+  // create an array with nodes
+  var nodes = new vis.DataSet({{{graphJSON.nodes}}});
+
+  // create an array with edges
+  var edges = new vis.DataSet({{{graphJSON.edges}}});
+
+  // create a network
+  var container = document.getElementById('mynetwork');
+  var data = {
+    nodes: nodes,
+    edges: edges
+  };
+  var options = { 
+        layout: { 
+            improvedLayout: false, 
+            hierarchical: { sortMethod: 'directed', direction: 'UD', },
+        },
+        physics: { enabled: false },
+        nodes: { scaling: { min: 5 }, shape: 'square', },
+        edges: { arrows: 'to' },
+    };
+  var network = new vis.Network(container, data, options);
+</script>
+
+
+<h1>Dependency Modules</h1>
+<h2>Nodes</h2>
+<ul>
+    {{#each graph.nodes}}
+        <li>{{label}} - {{value}} KB</li>
+    {{/each}}
+</ul>
+<h2>Edges</h2>
+<ul>
+    {{#each graph.edges}}
+        <li>{{from}} -> {{to}}</li>
+    {{/each}}
+</ul>
+
